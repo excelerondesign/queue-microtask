@@ -6,7 +6,7 @@
 let lazyPromise;
 
 export default "function"==typeof queueMicrotask
-	? queueMicrotask.bind(globalThis)
+	? queueMicrotask.bind(self)
 	: /** @param {(value: void)=>void|PromiseLike<void>} cb */ cb => (lazyPromise||(lazyPromise=Promise.resolve()))
 		.then(cb)
 		.catch((
